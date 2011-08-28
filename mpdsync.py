@@ -33,7 +33,7 @@ class MPDClient():
     def connect(self):
         ret = True
     
-        # Make sure we aren't connected first
+        # Forcibly make sure we aren't connected first
         try:
             self.client.disconnect()
         except:
@@ -47,8 +47,8 @@ class MPDClient():
         
         except:
             print("Error: Unable to connect to the server")
-            print("\tHost: " + host + ", Port: " + str(port))
-            return False
+            print("\tHost: %s, Port: %d" % (self.host, str(self.port)))
+            ret = False
             
         return ret
         
@@ -151,10 +151,9 @@ def sync(master, slaves):
                     
                 slave.plversion = int(master_status['playlist'])
                 
-                
-                
             elif subsystem == 'player':
                 sync_player(master, slave)
+                
             elif subsystem == 'mixer':
                 pass    # Future: raise/lower volume with the master
             
@@ -187,6 +186,7 @@ def full_sync(master, slaves):
             
             
 def sync_player(master, slave):
+    """ Syncs a slave's player status to the master """
     status = master.client.status()
     
     if status['state'] == 'play':
