@@ -7,7 +7,7 @@
 
 import json
 
-import mpd  # Requires the python-mpd library
+import mpd
 
 
 class MPDClient():
