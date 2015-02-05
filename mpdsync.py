@@ -77,7 +77,7 @@ def main():
 
     # Wait for something to happen and sync the slaves
     # Note: sync() calls master.idle() which will block until something happens
-    # on the master server. No
+    # on the master server.
     while True:
         # Make sure that the master is alive
         if not master.check_connection():
