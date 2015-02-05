@@ -81,8 +81,8 @@ def main():
     while True:
         # Make sure that the master is alive
         if not master.check_connection():
-            print("Error: Lost connection to master and couldn't get it back. Quitting.")
-            quit(-2)
+            print("Error: Lost connection to master and couldn't get it back.")
+            quit(2)
 
         sync(master, slaves)
 
@@ -98,17 +98,17 @@ def get_settings(settings_file="settings.json"):
     except:
         print("Error: Unable to load settings file. Check that it's there and syntatically correct.")
         print("For your reference, I tried to open " + str(settings_file))
-        quit(-1)
+        quit(1)
 
     if settings.get('servers') is None:
         print("Error: No servers are defined in settings file")
-        quit(-1)
+        quit(1)
     elif settings['servers'].get('master') is None:
         print("Error: No master server is defined in your settings file!")
-        quit(-1)
+        quit(1)
     elif settings['servers'].get('slaves') is None:
         print("Error: No slave servers are defined in your settings file!")
-        quit(-1)
+        quit(1)
 
     return settings
 
