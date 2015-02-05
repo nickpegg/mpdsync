@@ -1,11 +1,9 @@
 #! /usr/bin/which python
 
 # mpdsync.py
-# Written by Nick Pegg
 
-# An MPD client which syncs multiple MPD servers, providing they have the same
-# copy of the database. I created this because I needed a way to sync music
-# playback between my living room and my garage
+# An MPD client which syncs multiple MPD servers,
+# providing they have the same copy of the database.
 
 import json
 
